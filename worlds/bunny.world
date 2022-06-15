@@ -43,7 +43,7 @@
           </geometry>
         </visual>
       </link>
-      <plugin name='light_control' filename='libLedPlugin.so'>
+      <plugin name='light_control' filename='libRosLed.so'>
         <light>
           <id>mainbunny/lamp</id>
           <block>

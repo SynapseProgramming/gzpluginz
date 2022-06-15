@@ -51,4 +51,8 @@ list(APPEND CMAKE_CXX_FLAGS "${GAZEBO_CXX_FLAGS}")
 add_library(hello_world src/hello_world.cc)
 target_link_libraries(hello_world ${GAZEBO_LIBRARIES})
 
+
+add_library(RosLed src/RosLed.cc)
+target_link_libraries(RosLed ${GAZEBO_LIBRARIES})
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
