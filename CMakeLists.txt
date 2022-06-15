@@ -10,6 +10,7 @@ project(gzpluginz)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   gazebo
+  std_srvs
 )
 
 
