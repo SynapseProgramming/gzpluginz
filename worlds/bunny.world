@@ -22,6 +22,9 @@
     <model name="bunny">
       <pose>-1 0 0 0 0 0</pose>
       <link name="link">
+
+        <light name='lamp' type='point'/>
+        <!-- <light> <id>light_source</id> <duration>0.1</duration> <interval>0.4</interval> <enable>true</enable> </light> -->
         <collision name="collision">
           <geometry>
             <mesh>
@@ -30,7 +33,7 @@
             </mesh>
           </geometry>
         </collision>
-        <visual name="visual">
+        <visual name="lamp">
           <material>Gazebo/White</material>
           <geometry>
             <mesh>
@@ -40,6 +43,17 @@
           </geometry>
         </visual>
       </link>
+      <plugin name='light_control' filename='libLedPlugin.so'>
+        <light>
+          <id>link/lamp</id>
+          <block>
+            <duration>1</duration>
+            <interval>0.2</interval>
+            <color>1 0.5 0.5</color>
+          </block>
+          <enable>true</enable>
+        </light>
+      </plugin>
     </model>
 
     <physics type="ode">
