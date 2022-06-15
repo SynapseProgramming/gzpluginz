@@ -12,10 +12,7 @@
       <uri>model://ground_plane</uri>
     </include>
 
-    <!-- World plugin that publishes event messages.
-         The topics used in these messages match up with topics used by the
-         plugin in the elevator model below.
-    -->
+    <!-- World plugin that publishes event messages. The topics used in these messages match up with topics used by the plugin in the elevator model below. -->
     <plugin filename="libSimEventsPlugin.so" name="elevator_event_plugin">
       <!-- Region on the ground floor, in front of the elevator -->
       <region>
@@ -77,8 +74,7 @@
           </geometry>
         </visual>
 
-        <!-- wall1_collision is the wall to the right of the door, when
-             facing the door -->
+        <!-- wall1_collision is the wall to the right of the door, when facing the door -->
         <collision name="wall1_collision">
           <pose>1.0745 0.5725 1.125 0 0 0</pose>
           <geometry>
@@ -101,8 +97,7 @@
           </material>
         </visual>
 
-        <!-- wall2_collision is the wall to the left of the door, when
-             facing the door -->
+        <!-- wall2_collision is the wall to the left of the door, when facing the door -->
         <collision name="wall2_collision">
           <pose>1.0745 -1.0625 1.125 0 0 0</pose>
           <geometry>
@@ -184,7 +179,7 @@
       </joint>
 
       <!-- Plugin to control the elevator -->
-      <plugin filename="libElevatorPlugin.so" name="elevator_plugin">
+      <plugin filename="libRosElevator.so" name="elevator_plugin">
         <lift_joint>elevator::lift</lift_joint>
         <door_joint>elevator::door</door_joint>
         <floor_height>3.075</floor_height>
