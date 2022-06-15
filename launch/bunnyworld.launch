@@ -10,6 +10,7 @@
     <arg name="gui" value="true"/>
     <arg name="headless" value="false"/>
     <arg name="debug" value="false"/>
+    <arg name="extra_gazebo_args" value="--verbose"/>
   </include>
 
 </launch>
