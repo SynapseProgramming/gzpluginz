@@ -21,7 +21,7 @@
 
     <model name="bunny">
       <pose>-1 0 0 0 0 0</pose>
-      <link name="link">
+      <link name="mainbunny">
 
         <light name='lamp' type='point'/>
         <!-- <light> <id>light_source</id> <duration>0.1</duration> <interval>0.4</interval> <enable>true</enable> </light> -->
@@ -45,7 +45,7 @@
       </link>
       <plugin name='light_control' filename='libLedPlugin.so'>
         <light>
-          <id>link/lamp</id>
+          <id>mainbunny/lamp</id>
           <block>
             <duration>1</duration>
             <interval>0.2</interval>
