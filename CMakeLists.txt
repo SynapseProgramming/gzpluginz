@@ -53,6 +53,6 @@ target_link_libraries(hello_world ${GAZEBO_LIBRARIES})
 
 
 add_library(RosLed src/RosLed.cc)
-target_link_libraries(RosLed ${GAZEBO_LIBRARIES})
+target_link_libraries(RosLed ${GAZEBO_LIBRARIES} LedPlugin)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
