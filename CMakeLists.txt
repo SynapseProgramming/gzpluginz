@@ -11,9 +11,19 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   gazebo
   std_srvs
+  std_msgs
+  message_generation
 )
 
+add_service_files(
+  FILES
+  lift.srv
+)
 
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
