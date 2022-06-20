@@ -36,12 +36,9 @@
         </visual>
       </link>
 
-      <!-- <link name="door"> <pose>1.0745 -0.5 1.125 0 0 0</pose> <collision name="collision"> <geometry> <box> <size>0.08 1.0 2.25</size> </box> </geometry> </collision> <visual name="visual"> <geometry> <box> <size>0.08 1.0 2.25</size> </box>
-      </geometry> </visual> </link> -->
-
       <link name="leftwall">
         <collision name="wall1_collision">
-          <pose>0 -1.1 1.0 0 0 0</pose>
+          <pose>0 -1.1 1.075 0 0 0</pose>
           <geometry>
             <box>
               <size>2 0.2 2</size>
@@ -50,6 +47,30 @@
         </collision>
         <visual name="wall1_visual">
           <pose>0 -1.1 1.075 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>2 0.2 2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+
+      <link name="rightwall">
+        <collision name="wall1_collision">
+          <pose>0 1.1 1.075 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>2 0.2 2</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="wall1_visual">
+          <pose>0 1.1 1.075 0 0 0</pose>
           <geometry>
             <box>
               <size>2 0.2 2</size>
@@ -132,6 +153,12 @@
         <pose>0 0 0 0 0 0</pose>
         <parent>link</parent>
         <child>leftwall</child>
+      </joint>
+
+      <joint name="rightwall_joint" type="fixed">
+        <pose>0 0 0 0 0 0</pose>
+        <parent>link</parent>
+        <child>rightwall</child>
       </joint>
 
       <joint name="rdoor" type="prismatic">
