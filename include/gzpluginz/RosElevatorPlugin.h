@@ -22,6 +22,7 @@ public:
 private:
   ros::ServiceServer service;
   physics::JointPtr right_door_joint;
+  physics::JointPtr left_door_joint;
   GazeboRosPtr gazebo_ros_;
 
   event::ConnectionPtr update_connection_;

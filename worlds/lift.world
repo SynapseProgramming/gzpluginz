@@ -156,6 +156,7 @@
       <plugin filename="libRosElevator.so" name="elevator_plugin">
         <lift_joint>elevator::lift</lift_joint>
         <door_joint>elevator::rdoor</door_joint>
+        <left_door_joint>elevator::ldoor</left_door_joint>
         <floor_height>3.075</floor_height>
 
         <!-- Time the elevator door will stay open in seconds -->
