@@ -72,6 +72,47 @@
         </visual>
       </link>
 
+      <link name="leftdoor">
+        <collision name="wall1_collision">
+          <pose>1.0745 -0.5725 1.125 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 1.15 2.25</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="wall1_visual">
+          <pose>1.0745 -0.5725 1.125 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 1.15 2.25</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+
+      <joint name="ldoor" type="prismatic">
+        <parent>link</parent>
+        <child>leftdoor</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1</lower>
+            <upper>0</upper>
+            <effort>10</effort>
+          </limit>
+
+          <dynamics>
+            <damping>2</damping>
+          </dynamics>
+        </axis>
+      </joint>
+
       <joint name="rdoor" type="prismatic">
         <parent>link</parent>
         <child>rightdoor</child>
