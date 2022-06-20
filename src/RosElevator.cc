@@ -20,6 +20,15 @@ void RosElevator::Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf) {
   // ROS service to receive a command to control the light
   ros::NodeHandle n;
   this->service = n.advertiseService("floor", &RosElevator::Control, this);
+  // listen to the update event (broadcast every simulation iteration)
+  this->update_connection_ = event::Events::ConnectWorldUpdateBegin(
+      boost::bind(&RosElevator::Update, this));
+  cnt = 0;
+}
+
+void RosElevator::Update() {
+  std::cout << cnt << "\n";
+  cnt++;
 }
 
 bool RosElevator::Control(gzpluginz::lift::Request &_req,

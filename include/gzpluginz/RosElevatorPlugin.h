@@ -13,11 +13,15 @@ class RosElevator : public ElevatorPlugin {
 public:
   void Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf) override;
 
+  void Update();
+
   bool Control(gzpluginz::lift::Request &_req, gzpluginz::lift::Response &_res);
 
   /// \brief ROS service server.
 private:
   ros::ServiceServer service;
+  long int cnt;
+  event::ConnectionPtr update_connection_;
 };
 
 GZ_REGISTER_MODEL_PLUGIN(RosElevator)
