@@ -4,22 +4,17 @@ namespace gazebo {
 
 void RosElevator::Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf) {
 
+  gazebo_ros_ = GazeboRosPtr(new GazeboRos(_parent, _sdf, "LiftControl"));
   // Make sure the ROS node for Gazebo has already been initialized
-  if (!ros::isInitialized()) {
-    ROS_FATAL_STREAM("A ROS node for Gazebo has not been initialized, unable "
-                     "to load plugin. "
-                     << "Load the Gazebo system plugin "
-                        "'libgazebo_ros_api_plugin.so' in the gazebo_ros "
-                        "package)");
-    return;
-  }
+  gazebo_ros_->isInitialized();
   ROS_INFO("RosElevator Gazebo ROS plugin loading.");
 
-  ElevatorPlugin::Load(_parent, _sdf);
-
+  // ElevatorPlugin::Load(_parent, _sdf);
+  // door_joint =
+  //     gazebo_ros_->getJoint(parent, "steeringJoint", "front_steering_joint");
   // ROS service to receive a command to control the light
-  ros::NodeHandle n;
-  this->service = n.advertiseService("floor", &RosElevator::Control, this);
+  this->service = gazebo_ros_->node()->advertiseService(
+      "floor", &RosElevator::Control, this);
   // listen to the update event (broadcast every simulation iteration)
   this->update_connection_ = event::Events::ConnectWorldUpdateBegin(
       boost::bind(&RosElevator::Update, this));

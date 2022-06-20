@@ -10,9 +10,11 @@ project(gzpluginz)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   gazebo
+  gazebo_plugins
   std_srvs
   std_msgs
   message_generation
+
 )
 
 add_service_files(
@@ -68,6 +70,6 @@ target_link_libraries(RosLed ${GAZEBO_LIBRARIES} LedPlugin)
 
 
 add_library(RosElevator src/RosElevator.cc)
-target_link_libraries(RosElevator ${GAZEBO_LIBRARIES} ElevatorPlugin)
+target_link_libraries(RosElevator ${GAZEBO_LIBRARIES} ${catkin_LIBRARIES} ElevatorPlugin)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
