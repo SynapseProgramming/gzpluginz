@@ -22,15 +22,16 @@ void RosElevator::Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf) {
   this->service = n.advertiseService("floor", &RosElevator::Control, this);
 }
 
-bool RosElevator::Control(std_srvs::SetBool::Request &_req,
-                          std_srvs::SetBool::Response &_res) {
-  if (_req.data) {
-    this->MoveToFloor(1);
+bool RosElevator::Control(gzpluginz::lift::Request &_req,
+                          gzpluginz::lift::Response &_res) {
+  if (_req.floor < 0) {
+    _res.status = false;
+    return _res.status;
   } else {
-    this->MoveToFloor(0);
+    _res.status = true;
+    this->MoveToFloor(_req.floor);
+    return true;
   }
-
-  return _res.success;
 }
 
 } // namespace gazebo
