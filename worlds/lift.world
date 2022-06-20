@@ -23,45 +23,60 @@
         <collision name="floor_collision">
           <geometry>
             <box>
-              <size>2.25 2.25 0.15</size>
+              <size>2.0 2.0 0.15</size>
             </box>
           </geometry>
         </collision>
         <visual name="floor_visual">
           <geometry>
             <box>
-              <size>2.25 2.25 0.15</size>
+              <size>2.0 2.0 0.15</size>
             </box>
           </geometry>
         </visual>
-
-        <!-- wall1_collision is the wall to the right of the door, when facing the door -->
-        <!-- <collision name="wall1_collision"> <pose>1.0745 0.5725 1.125 0 0 0</pose> <geometry> <box> <size>0.1 1.15 2.25</size> </box> </geometry> </collision> <visual name="wall1_visual"> <pose>1.0745 0.5725 1.125 0 0 0</pose> <geometry> <box> <size>0.1
-        1.15 2.25</size> </box> </geometry> <material> <script> <name>Gazebo/Red</name> </script> </material> </visual> -->
-
-        <!-- wall2_collision is the wall to the left of the door, when facing the door -->
-
-        <!-- <collision name="wall2_collision"> <pose>1.0745 -1.0625 1.125 0 0 0</pose> <geometry> <box> <size>0.1 0.125 2.25</size> </box> </geometry> </collision> <visual name="wall2_visual"> <pose>1.0745 -1.0625 1.125 0 0 0</pose> <geometry> <box>
-        <size>0.1 0.125 2.25</size> </box> </geometry> <material> <script> <name>Gazebo/Red</name> </script> </material> </visual> -->
       </link>
 
       <!-- <link name="door"> <pose>1.0745 -0.5 1.125 0 0 0</pose> <collision name="collision"> <geometry> <box> <size>0.08 1.0 2.25</size> </box> </geometry> </collision> <visual name="visual"> <geometry> <box> <size>0.08 1.0 2.25</size> </box>
       </geometry> </visual> </link> -->
 
-      <link name="rightdoor">
+      <link name="leftwall">
         <collision name="wall1_collision">
-          <pose>1.0745 0.5725 1.125 0 0 0</pose>
+          <pose>0 -1.1 1.0 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.1 1.15 2.25</size>
+              <size>2 0.2 2</size>
             </box>
           </geometry>
         </collision>
         <visual name="wall1_visual">
-          <pose>1.0745 0.5725 1.125 0 0 0</pose>
+          <pose>0 -1.1 1.075 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.1 1.15 2.25</size>
+              <size>2 0.2 2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+
+      <link name="rightdoor">
+        <collision name="wall1_collision">
+          <pose>1.0745 0.50 1.125 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 1.0 2.25</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="wall1_visual">
+          <pose>1.0745 0.50 1.125 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 1.0 2.25</size>
             </box>
           </geometry>
           <material>
@@ -74,18 +89,18 @@
 
       <link name="leftdoor">
         <collision name="wall1_collision">
-          <pose>1.0745 -0.5725 1.125 0 0 0</pose>
+          <pose>1.0745 -0.5 1.125 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.1 1.15 2.25</size>
+              <size>0.1 1.0 2.25</size>
             </box>
           </geometry>
         </collision>
         <visual name="wall1_visual">
-          <pose>1.0745 -0.5725 1.125 0 0 0</pose>
+          <pose>1.0745 -0.5 1.125 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.1 1.15 2.25</size>
+              <size>0.1 1.0 2.25</size>
             </box>
           </geometry>
           <material>
@@ -111,6 +126,12 @@
             <damping>2</damping>
           </dynamics>
         </axis>
+      </joint>
+
+      <joint name="leftwall_joint" type="fixed">
+        <pose>0 0 0 0 0 0</pose>
+        <parent>link</parent>
+        <child>leftwall</child>
       </joint>
 
       <joint name="rdoor" type="prismatic">
