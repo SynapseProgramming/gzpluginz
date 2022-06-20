@@ -22,7 +22,6 @@ public:
 private:
   ros::ServiceServer service;
   physics::JointPtr door_joint;
-  long int cnt;
   GazeboRosPtr gazebo_ros_;
 
   event::ConnectionPtr update_connection_;

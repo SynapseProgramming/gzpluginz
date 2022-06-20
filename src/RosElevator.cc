@@ -9,21 +9,19 @@ void RosElevator::Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf) {
   gazebo_ros_->isInitialized();
   ROS_INFO("RosElevator Gazebo ROS plugin loading.");
 
-  // ElevatorPlugin::Load(_parent, _sdf);
-  // door_joint =
-  //     gazebo_ros_->getJoint(parent, "steeringJoint", "front_steering_joint");
+  ElevatorPlugin::Load(_parent, _sdf);
+  door_joint = gazebo_ros_->getJoint(_parent, "door_joint", "door_joint");
   // ROS service to receive a command to control the light
   this->service = gazebo_ros_->node()->advertiseService(
       "floor", &RosElevator::Control, this);
   // listen to the update event (broadcast every simulation iteration)
   this->update_connection_ = event::Events::ConnectWorldUpdateBegin(
       boost::bind(&RosElevator::Update, this));
-  cnt = 0;
 }
 
 void RosElevator::Update() {
-  std::cout << cnt << "\n";
-  cnt++;
+  double current_angle = door_joint->Position(0);
+  std::cout << current_angle << "\n";
 }
 
 bool RosElevator::Control(gzpluginz::lift::Request &_req,
