@@ -10,7 +10,7 @@ void RosElevator::Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf) {
   ROS_INFO("RosElevator Gazebo ROS plugin loading.");
 
   ElevatorPlugin::Load(_parent, _sdf);
-  door_joint = gazebo_ros_->getJoint(_parent, "door_joint", "door_joint");
+  right_door_joint = gazebo_ros_->getJoint(_parent, "door_joint", "door_joint");
   // ROS service to receive a command to control the light
   this->service = gazebo_ros_->node()->advertiseService(
       "floor", &RosElevator::Control, this);
@@ -20,7 +20,7 @@ void RosElevator::Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf) {
 }
 
 void RosElevator::Update() {
-  double current_angle = door_joint->Position(0);
+  double current_angle = right_door_joint->Position(0);
   std::cout << current_angle << "\n";
 }
 

@@ -48,7 +48,7 @@
       <!-- <link name="door"> <pose>1.0745 -0.5 1.125 0 0 0</pose> <collision name="collision"> <geometry> <box> <size>0.08 1.0 2.25</size> </box> </geometry> </collision> <visual name="visual"> <geometry> <box> <size>0.08 1.0 2.25</size> </box>
       </geometry> </visual> </link> -->
 
-      <link name="door">
+      <link name="rightdoor">
         <collision name="wall1_collision">
           <pose>1.0745 0.5725 1.125 0 0 0</pose>
           <geometry>
@@ -72,9 +72,9 @@
         </visual>
       </link>
 
-      <joint name="door" type="prismatic">
+      <joint name="rdoor" type="prismatic">
         <parent>link</parent>
-        <child>door</child>
+        <child>rightdoor</child>
         <axis>
           <xyz>0 1 0</xyz>
           <limit>
@@ -114,7 +114,7 @@
       <!-- Plugin to control the elevator -->
       <plugin filename="libRosElevator.so" name="elevator_plugin">
         <lift_joint>elevator::lift</lift_joint>
-        <door_joint>elevator::door</door_joint>
+        <door_joint>elevator::rdoor</door_joint>
         <floor_height>3.075</floor_height>
 
         <!-- Time the elevator door will stay open in seconds -->
