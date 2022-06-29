@@ -9,13 +9,15 @@ project(gzpluginz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  gazebo
   gazebo_plugins
   std_srvs
   std_msgs
   message_generation
-
 )
+
+find_package(gazebo REQUIRED)
+
+
 
 add_service_files(
   FILES
