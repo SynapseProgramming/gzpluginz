@@ -75,4 +75,13 @@ target_link_libraries(RosLed ${GAZEBO_LIBRARIES} LedPlugin)
 add_library(RosElevator src/RosElevator.cc)
 target_link_libraries(RosElevator ${GAZEBO_LIBRARIES} ${catkin_LIBRARIES} CustElevatorPlugin)
 
+
+# cmake commands related to rmf lift plugin
+add_library(rmf_sim_utils src/utils.cpp)
+target_link_libraries(rmf_sim_utils ${GAZEBO_LIBRARIES})
+
+
+
+
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
